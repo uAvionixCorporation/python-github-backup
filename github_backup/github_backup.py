@@ -1016,7 +1016,7 @@ def backup_releases(args, repo_cwd, repository, repos_template, include_assets=F
     # for each release, store it
     log_info('Saving {0} releases to disk'.format(len(releases)))
     for release in releases:
-        release_name = release['tag_name']
+        release_name = release['tag_name'].replace('/',':')
         output_filepath = os.path.join(release_cwd, '{0}.json'.format(release_name))
         with codecs.open(output_filepath, 'w+', encoding='utf-8') as f:
             json_dump(release, f)
